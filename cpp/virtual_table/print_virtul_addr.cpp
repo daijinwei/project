@@ -13,7 +13,6 @@ using namespace std;
 typedef void(*Fun)(void);
 
 class Base{
-//public:
 private:
     virtual void f(){cout << "Base::f()" << endl;}
     virtual void g(){cout << "Base::g()" << endl;}
@@ -24,18 +23,8 @@ Fun pFun = NULL;
 
 int main(){
     Base b;
-    //cout << "virtul table addr " << (int*)(&b) << endl; 
-    //cout << "virtul table first func addr " << (int*)*(int*)(&b) << endl; 
-    //Base *bp = &b;
-    //bp->f();
-    //bp->g();
-    //bp->h();
     for(long i = 0; i < 3; ++i){
-       pFun = (Fun)*((long*)*(long*)(&b) + i);
+        pFun = (Fun)*((long*)*(long*)(&b) + i);
         pFun();
     }
-        //pFun = (Fun)*((long*)*(long*)(&b) + 1);
-        //pFun();
-
-
 }
