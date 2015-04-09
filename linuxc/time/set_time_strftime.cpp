@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <time.h>
+
+int main()
+{
+	struct tm *ptr, *local;
+	time_t	now;
+	char	str[80];
+	now =  time(NULL);
+	ptr = localtime(&now);
+	strftime(str, 100, "It is now %H %p", ptr);
+	printf("%s\n", str);
+	return 0;
+}
