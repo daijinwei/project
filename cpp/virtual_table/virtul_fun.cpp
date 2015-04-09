@@ -17,23 +17,24 @@ public:
     virtual void f(){cout << "Base::f()" << endl;}
     virtual void g(){cout << "Base::g()" << endl;}
     virtual void h(){cout << "Base::h()" << endl;}
-    virtual ~Base(){}
+    void func(){cout << "Base::func()" << endl;}
+    virtual ~Base(){cout << "~Base()" << endl;}
 };
 
-class Devied : public Base{
+class Derived : public Base{
 public:
     void f(){cout << "Devied::f()" << endl;}
     void h(){cout << "Devied::h()" << endl;}
+    ~Derived(){cout << "~Dervied()" << endl;}
 };
 
 Fun pFun = NULL;
 
 int main(){
-    Base *bp;
-    Devied d;
-    bp = &d;
+    Base *bp = new Derived;
     bp->f();
     bp->g();
     bp->h();
-    
+    bp->func();    
+    delete bp;
 }
